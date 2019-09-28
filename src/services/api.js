@@ -1,15 +1,9 @@
-import Axios from 'axios';
+import axios from 'axios';
 
-const axios = Axios.create({
-    baseUrl: 'https://ourapi.com/api/v1'
-});
-
-export const getClients = async () => {
-    const { data } = await axios.get('/clients')
+export const fetchTrends = async companies => {
+    const { data } = await axios.post('http://localhost:3000/trends', { companies })
         .catch(e => {
             throw new Error(e);
         });
     return data;
-};
-
-export const getClientInfo = () => { };
+}

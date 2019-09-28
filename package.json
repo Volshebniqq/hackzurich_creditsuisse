@@ -13,6 +13,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.7",
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
+    "google-trends-api": "^4.9.0",
     "inertia-table": "^1.0.8",
     "mdbvue": "^5.8.2",
     "vue": "^2.6.10",
