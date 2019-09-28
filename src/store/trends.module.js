@@ -7,7 +7,7 @@ const state = {
 const actions = {
     async getTrendsData({ commit }, companies) {
         const data = await fetchTrends(companies);
-        console.log(data);
+        commit('setTrendsData', data);
     }
 };
 
@@ -18,7 +18,7 @@ const mutations = {
 };
 
 export default {
-    namepsafed: true,
+    namespaced: true,
     state,
     actions,
     mutations

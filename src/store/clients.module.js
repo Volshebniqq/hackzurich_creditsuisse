@@ -17,7 +17,9 @@ const actions = {
            return client;
         }));
         commit('setClients', clients);
-        commit('setDistinctStocks', allDistincStocks);
+        commit('setDistinctStocks', allDistinctStocks);
+        console.log(allDistinctStocks);
+        dispatch('trends/getTrendsData', allDistinctStocks, { root: true });
     },
 
     async getClientPortfolio({}, client) {

@@ -6,6 +6,10 @@
                 <font-awesome-icon :icon="['fa', 'users']" />
                 Clients
             </router-link>
+            <router-link to="/trends" class="link">
+                <font-awesome-icon :icon="['fa', 'chart-line']" />
+                Trends
+            </router-link>
         </div>
 
     </div>

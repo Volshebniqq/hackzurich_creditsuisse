@@ -6,11 +6,15 @@ import router from "./router";
 import store from "./store/store";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import HighchartsVue from 'highcharts-vue';
 
 
 library.add(faUsers);
+library.add(faChartLine);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.use(HighchartsVue);
 
 
 Vue.config.productionTip = false;
