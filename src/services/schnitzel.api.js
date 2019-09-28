@@ -16,5 +16,7 @@ export const fetchClients = async () => {
 
 export const fetchPortfolio = async id => {
     const { data } = await axios.get(`http://34.65.217.224:8888/openapi/accounts/${id}/balancesec/unsecured`);
+    console.log(data);
+    console.log("data");
     return data;
 };

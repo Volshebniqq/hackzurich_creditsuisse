@@ -19,6 +19,7 @@
         components: { mdbDatatable },
         computed: {
             rows() {
+
                 return this.$store.state.clients.clients.map(el => {
                     let portfolio = '';
                     if (el.portfolio && el.portfolio.length) {

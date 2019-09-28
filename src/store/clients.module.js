@@ -1,17 +1,23 @@
 import { fetchClients, fetchPortfolio } from "@/services/schnitzel.api";
 
 const state = {
-    clients: []
+    clients: [],
+    allDistinctStocks: []
 };
 
 const actions = {
     async getClients({ commit, dispatch }) {
         let { object: clients } = await fetchClients();
+        let allDistinctStocks = [];
         clients = await Promise.all(clients.map(async client => {
-           client.portfolio = await dispatch('getClientPortfolio', client);
+           let portfolio = await dispatch('getClientPortfolio', client);
+           let unique = [...new Set(portfolio)];
+           client.portfolio = unique;
+           allDistinctStocks = [...new Set(unique)];
            return client;
         }));
         commit('setClients', clients);
+        commit('setDistinctStocks', allDistincStocks);
     },
 
     async getClientPortfolio({}, client) {
@@ -24,6 +30,9 @@ const actions = {
 const mutations = {
     setClients(state, value) {
         state.clients = value;
+    },
+    setDistinctStocks(state, value) {
+        state.allDistinctStocks = value;
     }
 };
 
