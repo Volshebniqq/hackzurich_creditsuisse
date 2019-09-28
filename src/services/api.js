@@ -11,4 +11,5 @@ export const getClients = async () => {
         });
     return data;
 };
+
 export const getClientInfo = () => { };
