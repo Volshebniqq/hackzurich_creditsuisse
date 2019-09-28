@@ -6,17 +6,18 @@ const state = {
 
 const actions = {
     async getClients({ commit, dispatch }) {
-        const { object: clients } = await fetchClients();
-        clients.forEach(async client => {
+        let { object: clients } = await fetchClients();
+        clients = await Promise.all(clients.map(async client => {
            client.portfolio = await dispatch('getClientPortfolio', client);
-        });
+           return client;
+        }));
         commit('setClients', clients);
     },
 
-    async getClientPortfolio(client) {
+    async getClientPortfolio({}, client) {
         if (!client.accounts[0]) return;
-        const data = await fetchPortfolio(client.accounts[0].id);
-        console.log(data);
+        const { object: accounts } = await fetchPortfolio(client.accounts[0].id);
+        return accounts.map(el => el.issuer);
     }
 };
 

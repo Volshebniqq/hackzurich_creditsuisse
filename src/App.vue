@@ -34,6 +34,8 @@
         justify-content: space-between;
         .content {
             flex: 1;
+            height: 100vh;
+            overflow-y: hidden;
         }
     }
 </style>
