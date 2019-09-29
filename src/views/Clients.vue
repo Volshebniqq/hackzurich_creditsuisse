@@ -1,6 +1,6 @@
 <template>
     <div class="clients-container">
-        <h2>Clients</h2>
+        <h2>{{ filters }} Clients</h2>
         <mdb-datatable
                 v-if="rows.length"
                 :data="{ columns, rows }"
@@ -19,8 +19,7 @@
         components: { mdbDatatable },
         computed: {
             rows() {
-
-                return this.$store.state.clients.clients.map(el => {
+                let clients = this.$store.state.clients.clients.map(el => {
                     let portfolio = '';
                     if (el.portfolio && el.portfolio.length) {
                         el.portfolio.forEach((tag, idx) => {
@@ -35,6 +34,13 @@
                         portfolio
                     }
                 });
+                if (this.filters.length) {
+                    clients = clients.filter(el => el.portfolio.includes(this.filters));
+                }
+                return clients;
+            },
+            filters() {
+                return this.$store.state.clients.filters;
             }
         },
         data() {

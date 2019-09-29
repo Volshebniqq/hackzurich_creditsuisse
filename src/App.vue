@@ -17,6 +17,13 @@
         components: { Sidebar },
         created() {
             this.$store.dispatch('clients/getClients');
+        },
+        watch: {
+            $route(val, prev) {
+                if (prev.name === 'clients') {
+                    this.$store.commit('clients/setFilters', '');
+                }
+            }
         }
     }
 </script>

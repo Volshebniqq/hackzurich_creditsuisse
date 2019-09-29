@@ -10,6 +10,10 @@
                 <font-awesome-icon :icon="['fa', 'chart-line']" />
                 Trends
             </router-link>
+            <router-link to="/mentioned" class="link">
+                <font-awesome-icon :icon="['fa', 'hashtag']" />
+                Mentioned
+            </router-link>
         </div>
 
     </div>

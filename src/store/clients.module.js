@@ -2,7 +2,8 @@ import { fetchClients, fetchPortfolio } from "@/services/schnitzel.api";
 
 const state = {
     clients: [],
-    allDistinctStocks: []
+    allDistinctStocks: [],
+    filters: ''
 };
 
 const actions = {
@@ -18,8 +19,8 @@ const actions = {
         }));
         commit('setClients', clients);
         commit('setDistinctStocks', allDistinctStocks);
-        console.log(allDistinctStocks);
         dispatch('trends/getTrendsData', allDistinctStocks, { root: true });
+        dispatch('stocks/getMentionsData', allDistinctStocks, { root: true });
     },
 
     async getClientPortfolio({}, client) {
@@ -35,6 +36,9 @@ const mutations = {
     },
     setDistinctStocks(state, value) {
         state.allDistinctStocks = value;
+    },
+    setFilters(state, value) {
+        state.filters = value;
     }
 };
 
